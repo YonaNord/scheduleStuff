@@ -1,8 +1,9 @@
 
 import * as fs from 'fs';
 import prevdata from '../database/changes.json' assert { type: 'json' };
+import * as puppeteer from 'puppeteer';
 
-export async function get() {
+export async function getChanges() {
   try {
     let browser = await puppeteer.launch();
     let changesList = [];
