@@ -53,7 +53,7 @@ async function getEvents() {
                     data.push(date);
                 }
             });
-            file = fs.writeFile('./database/events.json', JSON.stringify(data), function(err) {
+            file = fs.writeFile('./backend/database/events.json', JSON.stringify(data), function(err) {
                 if (err) throw err;
             });
         });

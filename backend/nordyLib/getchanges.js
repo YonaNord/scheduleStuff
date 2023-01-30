@@ -1,8 +1,9 @@
 
 import * as fs from 'fs';
 import prevdata from '../database/changes.json' assert { type: 'json' };
+import * as puppeteer from 'puppeteer';
 
-export async function get() {
+export async function getChanges() {
   try {
     let browser = await puppeteer.launch();
     let changesList = [];
@@ -30,7 +31,7 @@ export async function get() {
     if (needToSend.length == 0) {
       needToSend = [false, "lol"];
     } else {
-      fs.writeFile('./database/changes.json', JSON.stringify(needToSend), function(err) {
+      fs.writeFile('./backend/database/changes.json', JSON.stringify(needToSend), function(err) {
         if (err) throw err;
       });
     } 

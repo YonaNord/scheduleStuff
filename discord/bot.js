@@ -1,21 +1,20 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 import * as Discord from 'discord.js';
-import * as changesCmd from './nordyLib/getchanges.js';
-import { Console } from 'console';
+import * as changesCmd from '../backend/nordyLib/getchanges.js';
 const client = new Discord.Client({intents:[7796]});
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
-// getChanges();
+getChanges();
 
 
 
 
 async function getChanges() {
-    let changes = await changesCmd.get();
+    var changes = await changesCmd.getChanges();
     let changesToText = `${changes}`;
     if (changesToText.includes("false")) {
         console.log('No changes detected, waiting 10 minutes...');
